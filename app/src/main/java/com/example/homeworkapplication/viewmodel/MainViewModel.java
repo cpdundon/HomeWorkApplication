@@ -17,7 +17,7 @@ public class MainViewModel extends ViewModel {
         return _people;
     }
 
-    public void loadPeopleList() {
+    public void loadPeopleList(int size) {
         List<Person> people = new ArrayList<>();
         people.add(new Person(21, "Mike", "Jones", "mjones@yhj.com"));
         people.add(new Person(45, "Mike", "Tyson", "mTyson@gh.com"));
@@ -25,7 +25,9 @@ public class MainViewModel extends ViewModel {
         people.add(new Person(23, "Lost", "Soul", "lSoul@dfg.com"));
         people.add(new Person(19, "Money", "Resides", "moneyResides@rtyh.com"));
         people.add(new Person(21, "Fan", "Tastic", "fantastic@fdsag.com"));
-        _people.setValue(people);
+
+        if (size > people.size()) size = people.size();
+        _people.setValue(people.subList(0, size));
     }
 
 }
